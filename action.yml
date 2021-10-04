@@ -1,14 +1,14 @@
 name: 'Idobata Notify'
-description: 'Send actions notification to idobata'
+description: 'Send actions notification to Idobata'
 inputs:
   idobata_hook_url:  # url of input
-    description: 'idobata url to sent notification post'
+    description: 'Idobata Custom Webhook URL'
     required: true
     default: ''
 runs:
   using: "composite"
   steps:
-    - name: 👤 Set env vars for notification
+    - name: 👤 Get commit info for notification
       run: |
         echo 'COMMIT_ACTOR=${{ github.actor }}' | awk -F '-preview' '{print $1}' >> $GITHUB_ENV
         if [ "${{ job.status }}" = "success" ]; then
