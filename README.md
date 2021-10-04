@@ -10,6 +10,8 @@ A [GitHub Action](https://github.com/features/actions) to send CI result to a Id
 
 MIT License. https://github.com/yasslab/idobata_notify/blob/main/LICENSE
 
+<br>
+
 ## Copyright
 
 Copyright &copy; [YassLab Inc.](https://yasslab.jp) 2012-2021
