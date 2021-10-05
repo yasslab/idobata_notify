@@ -40,7 +40,7 @@ runs:
     - name: 🔔 Notify results
       env:
         IDOBATA_SECRETS: ${{ inputs.idobata_hook_url }}
-      uses: mahaker/actions-idobata@v1.1.1
+      uses: mahaker/actions-idobata@v1.1.2
       with:
         hookUrl: ${{ env.IDOBATA_SECRETS }}
         format: 'markdown'
