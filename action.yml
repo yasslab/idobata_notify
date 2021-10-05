@@ -37,7 +37,7 @@ runs:
         fi
       shell: bash
 
-    - name: 🔔 Notify results
+    - name: 🔔 Notify results to Idobata
       env:
         IDOBATA_SECRETS: ${{ inputs.idobata_hook_url }}
       uses: mahaker/actions-idobata@v1.1.2
