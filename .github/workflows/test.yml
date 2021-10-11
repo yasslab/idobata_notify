@@ -14,14 +14,15 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
 
     steps:
-    - name: ☑️ Checkout code
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
 
   notify:
     needs: test
     runs-on: ubuntu-latest
+    if: always()
     steps:
 
       - name: ☑️ Checkout code
@@ -33,3 +34,4 @@ jobs:
         uses: ./
         with:
           idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
+          status: ${{ needs.test.result }}
