@@ -19,7 +19,11 @@ jobs:
       with:
         fetch-depth: 2
 
-    - name: 🔔 Notify results
-      uses: ./
-      with:
-        idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔔 Notify results
+        uses: ./
+        with:
+          idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
