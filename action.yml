@@ -7,8 +7,8 @@ inputs:
     default: ''
   status:  # Status of previous job
     description: 'Get previous job status'
-    required: true
-    default: ''
+    required: false
+    default: ${{ job.status }}
 runs:
   using: "composite"
   steps:
