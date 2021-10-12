@@ -6,6 +6,34 @@ A [GitHub Action](https://github.com/features/actions) to send CI result to a Id
 
 <br>
 
+## How to use
+
+```
+# Single job use
+
+  - name: 🔔 Notify results
+    uses: yasslab/idobata_notify
+    if: always()
+    with:
+      idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
+```
+
+```
+# Matrix
+
+  notify:
+    needs: test # depends where the matrix job is located
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+
+      - name: 🔔 Notify results
+        uses: yasslab/idobata_notify
+        with:
+          idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
+          status: ${{ needs.test.result }} # passing the matrix jobs results
+```
+
 ## LICENSE
 
 MIT License. https://github.com/yasslab/idobata_notify/blob/main/LICENSE
