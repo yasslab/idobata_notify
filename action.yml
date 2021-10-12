@@ -15,7 +15,7 @@ runs:
     - name: 👤 Get commit info for notification
       run: |
         echo 'COMMIT_ACTOR=${{ github.actor }}' | awk -F '-preview' '{print $1}' >> $GITHUB_ENV
-        if [ "${{ env.status }}" = "success" ]; then
+        if [ "${{ inputs.status }}" = "success" ]; then
           echo "STATUS_LABEL=success" >> $GITHUB_ENV
           echo "STATUS_TEXT=Success"  >> $GITHUB_ENV
         else

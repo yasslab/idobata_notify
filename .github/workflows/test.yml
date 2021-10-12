@@ -1,4 +1,4 @@
-name: Test
+name: Single Job Test
 on:
   push:
     branches: [ main ]

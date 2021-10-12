@@ -1,4 +1,4 @@
-name: Test
+name: Matrix Test
 on:
   push:
     branches: [ main ]
