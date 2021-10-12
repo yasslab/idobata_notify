@@ -5,13 +5,17 @@ inputs:
     description: 'Idobata Custom Webhook URL'
     required: true
     default: ''
+  status:  # Status of previous job
+    description: 'Get previous job status'
+    required: false
+    default: ${{ job.status }}
 runs:
   using: "composite"
   steps:
     - name: 👤 Get commit info for notification
       run: |
         echo 'COMMIT_ACTOR=${{ github.actor }}' | awk -F '-preview' '{print $1}' >> $GITHUB_ENV
-        if [ "${{ job.status }}" = "success" ]; then
+        if [ "${{ inputs.status }}" = "success" ]; then
           echo "STATUS_LABEL=success" >> $GITHUB_ENV
           echo "STATUS_TEXT=Success"  >> $GITHUB_ENV
         else

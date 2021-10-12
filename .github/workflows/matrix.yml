@@ -1,0 +1,37 @@
+name: Matrix Test
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: 🔔 Notify results
+        uses: ./
+        with:
+          idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
+          status: ${{ needs.test.result }}
