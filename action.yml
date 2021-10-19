@@ -17,10 +17,11 @@ runs:
         echo 'COMMIT_ACTOR=${{ github.actor }}' | awk -F '-preview' '{print $1}' >> $GITHUB_ENV
         if [ "${{ inputs.status }}" = "success" ]; then
           echo "STATUS_LABEL=success" >> $GITHUB_ENV
-          echo "STATUS_TEXT=Success"  >> $GITHUB_ENV
+          echo "STATUS_VERB=passed"   >> $GITHUB_ENV
         else
           echo "STATUS_LABEL=danger"  >> $GITHUB_ENV
           echo "STATUS_TEXT=Failure"  >> $GITHUB_ENV
+          echo "STATUS_VERB=failed"   >> $GITHUB_ENV
         fi
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           head_sha=$(echo "${{ github.event.pull_request.head.sha }}" | head -c8)
@@ -49,4 +50,4 @@ runs:
         hookUrl: ${{ env.IDOBATA_SECRETS }}
         format: 'markdown'
         message: |
-          CI build for [${{ env.COMMIT_LINK }}](${{ env.COMMIT_URL }}) : <span class='label label-${{ env.STATUS_LABEL }}'>${{ env.STATUS_TEXT }}</span> ([GitHub Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}))<br><img src='https://github.com/${{ env.COMMIT_ACTOR }}.png' class='icon-rounded' width='16' height='16'> [${{ env.COMMIT_ACTOR }}](https://github.com/${{ env.COMMIT_ACTOR }}): ${{ env.COMMIT_MESSAGE }} ([${{ env.COMMIT_SHA }}](https://github.com/${{ github.repository }}/commit/${{ env.COMMIT_SHA }}))
+          Your tests ${{ env.STATUS_VERB }} on [${{ env.COMMIT_LINK }}](${{ env.COMMIT_URL }}) ([build](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})) : <span class='label label-${{ env.STATUS_LABEL }}'>${{ env.STATUS_TEXT }}</span><br><img src='https://github.com/${{ env.COMMIT_ACTOR }}.png' class='icon-rounded' width='16' height='16'> [${{ env.COMMIT_ACTOR }}](https://github.com/${{ env.COMMIT_ACTOR }}): ${{ env.COMMIT_MESSAGE }} ([${{ env.COMMIT_SHA }}](https://github.com/${{ github.repository }}/commit/${{ env.COMMIT_SHA }}))
