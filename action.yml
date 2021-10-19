@@ -17,6 +17,7 @@ runs:
         echo 'COMMIT_ACTOR=${{ github.actor }}' | awk -F '-preview' '{print $1}' >> $GITHUB_ENV
         if [ "${{ inputs.status }}" = "success" ]; then
           echo "STATUS_LABEL=success" >> $GITHUB_ENV
+          echo "STATUS_TEXT=Success"  >> $GITHUB_ENV
           echo "STATUS_VERB=passed"   >> $GITHUB_ENV
         else
           echo "STATUS_LABEL=danger"  >> $GITHUB_ENV
