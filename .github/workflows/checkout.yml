@@ -1,0 +1,29 @@
+name: old ubuntu checkout
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: softcover/softcover:latest
+
+    steps:
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - uses: actions/checkout@v2
+      - id: install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+      - run: aws --version
+
+      - name: 🔔 Notify results
+        uses: ./
+        if: always()
+        with:
+          idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
