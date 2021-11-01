@@ -18,9 +18,7 @@ jobs:
         with:
           fetch-depth: 2
       - uses: actions/checkout@v2
-      - id: install-aws-cli
-        uses: unfor19/install-aws-cli-action@v1
-      - run: aws --version
+
 
       - name: 🔔 Notify results
         uses: ./
