@@ -18,6 +18,9 @@ jobs:
         with:
           fetch-depth: 2
       - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - run: ls -la
 
 
       - name: 🔔 Notify results

@@ -1,0 +1,3 @@
+[submodule "docker-profiling"]
+	path = docker-profiling
+	url = https://github.com/nanophate/docker-profiling
