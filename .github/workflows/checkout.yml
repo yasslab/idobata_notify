@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: softcover/softcover:latest
+      options: --user root
 
     steps:
       - name: ☑️ Checkout code
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
+      - run: ls -la
+      - run: cd "$(dirname ${0})/../.."
       - run: ls -la
 
 
