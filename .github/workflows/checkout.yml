@@ -19,9 +19,8 @@ jobs:
         with:
           fetch-depth: 2
       - run: ls -la
-      - run: cd "$(dirname ${0})/../.."
+      - run: sh .github/workflows/ci-test.sh
       - run: ls -la
-
 
       - name: 🔔 Notify results
         uses: ./
