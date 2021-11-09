@@ -4,6 +4,14 @@ set -ex
 
 ls -la
 
-cd "$(dirname ${0})../.."
+cd "$(dirname ${0})../../"
+
+ls -la
+
+cd "$(dirname ${0})../../.."
+
+ls -la
+
+cd "$(dirname ${0})../../../"
 
 ls -la
