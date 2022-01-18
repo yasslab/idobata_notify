@@ -1,0 +1,22 @@
+name: check branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ☑️ Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - run: ls -la
+      - run: echo ${GITHUB_REF}
+        shell: bash
+      - run: echo ${{ github.head_ref }}
