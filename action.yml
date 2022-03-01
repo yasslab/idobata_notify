@@ -42,7 +42,7 @@ runs:
           echo "COMMIT_LINK=${{ github.repository }}#$head_sha"                        >> $GITHUB_ENV
         fi
         
-        if [ '${{ COMMIT_MESSAGE }}' == 'ci' ]; then
+        if [ $COMMIT_MESSAGE == 'ci' ]; then
           echo "aaa"
         else
          echo "bbb"
