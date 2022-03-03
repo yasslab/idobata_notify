@@ -41,13 +41,8 @@ runs:
           echo "COMMIT_URL=https://github.com/${{github.repository}}/commit/$head_sha" >> $GITHUB_ENV
           echo "COMMIT_LINK=${{ github.repository }}#$head_sha"                        >> $GITHUB_ENV
         fi
-        echo $head_sha
-        echo $COMMIT_MESSAGE
-        if [[ $COMMIT_MESSAGE == 'ci' ]]; then
-          echo "aaa"
-        else
-         echo "bbb"
-        fi
+        echo "${{ github.event }}"
+        echo "${{ github.event.head_commit }}"
         
       shell: bash
 
