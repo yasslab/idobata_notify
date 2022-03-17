@@ -23,5 +23,7 @@ jobs:
           idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
           
       - name: Check head commit
-        run: echo github.event.head_commit.message
-        
+        run: |
+            echo ${{ github.event.head_commit.message }}
+            echo ${{ github.event.pull_request.title }}
+  
