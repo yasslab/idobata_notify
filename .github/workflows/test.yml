@@ -26,5 +26,5 @@ jobs:
         run: |
             echo ${{ contains(github.event.pull_request.title, 'Update') }}
             echo ${{ contains(github.event.pull_request.title, 'google') }}
-            echo $(git log) ${{ github.event.pull_request.title }}
+            echo $(git log -2 --pretty=%B) ${{ github.event.pull_request.title }}
 
