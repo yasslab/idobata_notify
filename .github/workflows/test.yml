@@ -24,6 +24,6 @@ jobs:
           
       - name: Check head commit
         run: |
-            echo ${{ !contains(github.event.pull_request.title, 'Update') }}
-            echo ${{ !contains(github.event.pull_request.title, 'google') }}
+            echo ${{ contains(github.event.pull_request.title, 'Update') }}
+            echo ${{ contains(github.event.pull_request.title, 'google') }}
 
