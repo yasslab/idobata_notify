@@ -19,6 +19,10 @@ runs:
           echo "STATUS_LABEL=success" >> $GITHUB_ENV
           echo "STATUS_TEXT=Success"  >> $GITHUB_ENV
           echo "STATUS_VERB=passed"   >> $GITHUB_ENV
+        elif [ "${{ inputs.status }}" = "skipped" ]; then
+          echo "STATUS_LABEL=default" >> $GITHUB_ENV
+          echo "STATUS_TEXT=Skip"  >> $GITHUB_ENV
+          echo "STATUS_VERB=skipped"   >> $GITHUB_ENV
         else
           echo "STATUS_LABEL=danger"  >> $GITHUB_ENV
           echo "STATUS_TEXT=Failure"  >> $GITHUB_ENV
