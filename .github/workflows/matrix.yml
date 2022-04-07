@@ -37,7 +37,7 @@ jobs:
           else
             echo "status=skipped" >> $GITHUB_ENV
           fi
-          echo ${{ env.status }}
+          echo "${{ env.status }}"
           
       - name: 🔔 Notify results
         uses: ./
