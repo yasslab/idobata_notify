@@ -19,12 +19,11 @@ jobs:
       - name: Check if spec was skipped?
         run: |
           if [ '${{ needs.test.result }}' == 'success' ]; then
-            STATUS="${{ needs.test.result }}"
+            echo "status=${{ needs.test.result }}" >> $GITHUB_ENV
           else
-            STATUS="skipped"
+            echo "status=skipped" >> $GITHUB_ENV
           fi
-          echo $STATUS
-          echo "::set-env name=status::$STATUS"
+          echo ${{ env.status }}
   
       - name: 🔔 Notify results
         uses: ./
