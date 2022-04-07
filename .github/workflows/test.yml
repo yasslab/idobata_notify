@@ -24,9 +24,10 @@ jobs:
             STATUS="skipped"
           fi
           echo $STATUS
+          echo "::set-env name=status::$STATUS"
   
       - name: 🔔 Notify results
         uses: ./
         with:
           idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
-          status: ${{ $STATUS }}
+          status: ${{ env.status }}
