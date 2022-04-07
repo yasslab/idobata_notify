@@ -30,8 +30,17 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Check if spec was skipped?
+        run: |
+          if [ '${{ needs.test.result }}' == 'success' ]; then
+            echo "status=${{ needs.test.result }}" >> $GITHUB_ENV
+          else
+            echo "status=skipped" >> $GITHUB_ENV
+          fi
+          echo ${{ env.status }}
+          
       - name: 🔔 Notify results
         uses: ./
         with:
           idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
-          status: ${{ needs.test.result }}
+          status: ${{ env.status }}
