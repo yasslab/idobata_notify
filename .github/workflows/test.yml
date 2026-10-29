@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: ☑️ Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.8.0
         with:
           fetch-depth: 2
 
       - name: 🔔 Notify results
-        uses: ./
+        uses: $/
         if: always()
         with:
           idobata_hook_url: ${{ secrets.IDOBATA_GITHUB_ACTIONS }}
